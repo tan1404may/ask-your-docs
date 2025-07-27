@@ -1,9 +1,11 @@
-# 🧠 RAG Chatbot – Weekend Demo Project
+# 🧠 ask-your-docs | talk with your documents
 
-Welcome to my demo weekend project!  
+Welcome!  
 This is a lightweight implementation of a **Retrieval-Augmented Generation (RAG)** system using **LangChain**, **FAISS**, and **Groq's LLaMA-4 model**.  
 The purpose of this project is to **demonstrate how RAG works**: fetching relevant document snippets and generating human-like responses using LLMs.
 
+
+##### nothing fancy here, just experimenting.
 ---
 
 ## 📘 What is RAG?
