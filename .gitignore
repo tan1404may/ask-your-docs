@@ -1,0 +1,58 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+
+
+
+
+# Python
+*.pyo
+*.pyd
+*.pdb
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Mac/Unix system files
+.DS_Store
+
+# Logs & cache
+*.log
+*.cache/
+.cache/
+*.db
+*.sqlite3
+
+# FAISS or Chroma vector DB files (if used)
+faiss_index/
+chroma/
+
+# LangChain
+lc_logs/
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# Temporary files
+*.tmp
+*.bak
+~$*
+
+# Test outputs
+coverage/
+htmlcov/
+.pytest_cache/
+
+# If using Streamlit or Flask
+.streamlit/
+
+# If using Docker
+*.pid
+*.tar
+*.img
