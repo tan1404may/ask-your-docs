@@ -11,11 +11,12 @@ print("to add documents to knowledge base, past the fie in data/KBI directory, a
 while(True):
     print("USER : ", end=" ")
     input_query = input()
-    input_query = input_query.lower()
-    if(input_query == "esc"):
+    cmd = input_query.lower()
+    if(cmd == "esc"):
         break 
         
-    elif(input_query == "ingest_doc"):
+    elif(cmd == "ingest_doc"):
+        print("Creating the Embeddings of the document")
         vector_store.ingest_docs()
 
     else:

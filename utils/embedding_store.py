@@ -13,18 +13,23 @@ class Embeddings:
     def __init__(self, index_dir="faiss_index", index_path="index.faiss"):
         """
         index_path :- index path is the directory path where embeddings are saved
-        """
+        """ 
         self.index_dir = index_dir 
+        self.index_path = index_path
         self.embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-base-en-v1.5")
         self.index = None
-        if os.path.exists(os.path.join(self.index_dir, index_path)):
+        if os.path.exists(os.path.join(self.index_dir, self.index_path)):
             self.index = FAISS.load_local(self.index_dir, self.embeddings, allow_dangerous_deserialization=True)
 
     def ingest_docs(self, input_dir="data/KBI", output_dir="data/FinalKB"):
+        if not os.path.exists(input_dir): 
+            print(f"Input directory '{input_dir}' does not exist.")
+            return 
+                
         input_docs = os.listdir(input_dir)
         if len(input_docs) == 0:
             print("No documents found in input directory.")
-            return
+            return  
         splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
         if(not os.path.exists(output_dir)):
             os.mkdir(output_dir)

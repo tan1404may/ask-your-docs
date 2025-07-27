@@ -23,12 +23,20 @@ class RAGCHAIN:
         self.get_content = RunnableLambda(lambda x : x.content)
         self.rag_chain = (
                 RunnableMap({
-                    "context": lambda q: "\n\n".join(doc.page_content for doc in self.retriever.invoke(q)),
+                    "context": lambda q: self.retrive_context(q),
                     "query": RunnablePassthrough()
                 })
             | self.prompt
             | self.llm
             | self.get_content)
+
+    def retrive_context(self, q):
+        if not self.retriever:
+            return "No knowledge base available."
+        results = self.retriever.invoke(q)
+        if not results:
+            return "No relevant documents found."
+        return "\n\n".join(doc.page_content for doc in results)
 
 
     def chat(self, query):
